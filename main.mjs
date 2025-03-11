@@ -3,7 +3,7 @@
 
 // Usage: 
 //     1 bash - create filtered subset of json dump (in project directory)
-// cat systems.json.gz | gunzip | sed '1d;$d;s/,$//' | node main.mjs > bubbleBodies500.json
+// cat galaxy.json.gz | gunzip | sed '1d;$d;s/,$//' | node main.mjs > bubbleBodies500.json
 //
 //     2 sql - create staging table to load subset into
 // create table ed_stg.stg_bubble500 (body_data jsonb);
