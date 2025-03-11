@@ -1,0 +1,14 @@
+{
+  "name": "streamer",
+  "version": "1.0.0",
+  "description": "streaming parser for Spansh Galaxy dumps",
+  "main": "main.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zoy",
+  "license": "ISC",
+  "dependencies": {
+    "stream-json": "^1.9.1"
+  }
+}
