@@ -14,13 +14,16 @@
 // date
 // cat bubbleBodies500.json | psql $cxnstring -c "COPY ed_stg.stg_bubble500 (body_data) FROM STDIN"
 // date
+//
+// you could of course join steps 1 & 3 into a single pipeline, but I prefer to have the subset saved to disk
+
 
 import { createInterface } from "node:readline"
 
 let accepted = 0;
 let rejected = 0;
 
-const bubsize = 500
+const bubsize = 550
 const xmin = bubsize * -1;
 const xmax = bubsize;
 const ymin = bubsize * -1;
@@ -46,8 +49,11 @@ function processSystem(line) {
   const y = system.coords.y;
   const z = system.coords.z;
   const bubble = x > xmin && x < xmax && y > ymin && y < ymax && z > zmin && z < zmax;
+  
+  // factions 0 = unclaimed, 1 = construction in progress, 2+ = claimed
+  const factions = system.factions ? system.factions.length : 0;
 
-  const keep = bubble && !populated;
+  const keep = bubble && !populated && factions === 0;
 
   if (keep) {
     minx = x < minx ? x : minx;
