@@ -49,11 +49,12 @@ function processSystem(line) {
   const y = system.coords.y;
   const z = system.coords.z;
   const bubble = x > xmin && x < xmax && y > ymin && y < ymax && z > zmin && z < zmax;
-  
+
   // factions 0 = unclaimed, 1 = construction in progress, 2+ = claimed
   const factions = system.factions ? system.factions.length : 0;
 
-  const keep = bubble && !populated && factions === 0;
+  const keep = bubble; 
+        // &&  !populated && factions === 0;
 
   if (keep) {
     minx = x < minx ? x : minx;
@@ -96,7 +97,8 @@ function getBodySubset(bodyData) {
       isLandable: rest.isLandable,
       isTerraformable: rest.terraformingState === 'Terraformable'?true:false,
       distanceToArrival: rest.distanceToArrival,
-      parents: rest.parents
+      parents: rest.parents,
+      factionCount: rest.factions ? rest.factions.length : 0
     };
   });
 }
