@@ -81,6 +81,7 @@ function getBodyJson(fullSysData) {
       y: fullSysData.coords.y,
       z: fullSysData.coords.z
     },
+    factionCount: fullSysData.factions ? rest.factions.length : 0,
     bodies: getBodySubset(fullSysData.bodies)
   };
 }
@@ -97,8 +98,7 @@ function getBodySubset(bodyData) {
       isLandable: rest.isLandable,
       isTerraformable: rest.terraformingState === 'Terraformable'?true:false,
       distanceToArrival: rest.distanceToArrival,
-      parents: rest.parents,
-      factionCount: rest.factions ? rest.factions.length : 0
+      parents: rest.parents
     };
   });
 }
