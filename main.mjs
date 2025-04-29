@@ -81,7 +81,7 @@ function getBodyJson(fullSysData) {
       y: fullSysData.coords.y,
       z: fullSysData.coords.z
     },
-    factionCount: fullSysData.factions ? rest.factions.length : 0,
+    factionCount: fullSysData.factions ? fullSysData.factions.length : 0,
     bodies: getBodySubset(fullSysData.bodies)
   };
 }
